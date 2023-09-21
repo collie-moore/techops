@@ -15,33 +15,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 env = environ.Env(DEBUG=(bool, True))
 env_file = os.path.join(BASE_DIR, ".env")
 
-# # # Attempt to load the Project ID into the environment, safely failing on error.
-# # # Attempt to load the Project ID into the environment, safely failing on error.
-# try:
-#     _, os.environ["GOOGLE_CLOUD_PROJECT"] = google.auth.default()
-# except google.auth.exceptions.DefaultCredentialsError:
-#     pass
-
-# if os.path.isfile(env_file):
-#     # Use a local secret file, if provided
-
-#     env.read_env(env_file)
-# # ...
-# elif os.environ.get("GOOGLE_CLOUD_PROJECT", None):
-#     # Pull secrets from Secret Manager
-#     project_id = os.environ.get("GOOGLE_CLOUD_PROJECT")
-
-#     client = secretmanager.SecretManagerServiceClient()
-#     settings_name = os.environ.get("SETTINGS_NAME", "techops")
-#     name = f"projects/{project_id}/secrets/{settings_name}/versions/1"
-#     payload = client.access_secret_version(name=name).payload.data.decode("UTF-8")
-
-#     env.read_env(io.StringIO(payload))
-# else:
-#     raise Exception("No local .env or GOOGLE_CLOUD_PROJECT detected. No secrets found.")
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEYS')
+SECRET_KEY = 'hjy)!gtz$qydl%=j$*#*ri!5k&$^x#9pqswyckmorlp(ihu!)2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

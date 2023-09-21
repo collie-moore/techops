@@ -17,7 +17,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   cluster    = google_container_cluster.primary.name
   node_count = 1
   node_config {
-    preemptible  = true
-    machine_type = "n1-standard-1"
+    preemptible  = false
+    machine_type = "e2-standard-4"
   }
 }
