@@ -1,0 +1,4 @@
+HOST='34.42.192.164'
+USER='my-user'
+PASSWORD='my-password'
+NAME='my-database'

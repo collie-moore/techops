@@ -1,3 +1,47 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: techops
+# spec:
+#   selector:
+#     matchLabels:
+#       app: techops
+#   template:
+#     metadata:
+#       labels:
+#         app: techops
+#     spec:
+#       containers:
+#       - name: techops
+#         image: gcr.io/buupassdev/github.com/collie-moore/techops@sha256:1345214a77bf639584e26064ddef5992b117cbc561a1c798aafc729670444a78
+#         env:
+#         - name: HOST
+#           valueFrom:
+#             configMapKeyRef:
+#               key: HOST
+#               name: techops-config-ib1q
+#         - name: USER
+#           valueFrom:
+#             configMapKeyRef:
+#               key: USER
+#               name: techops-config-ib1q
+#         - name: PASSWORD
+#           valueFrom:
+#             configMapKeyRef:
+#               key: PASSWORD
+#               name: techops-config-ib1q
+#         - name: NAME
+#           valueFrom:
+#             configMapKeyRef:
+#               key: NAME
+#               name: techops-config-ib1q
+#         resources:
+#           limits:
+#             memory: "128Mi"
+#             cpu: "500m"
+#         ports:
+#         - containerPort: 8000
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -13,28 +57,10 @@ spec:
     spec:
       containers:
       - name: techops
-        image: gcr.io/buupassdev/github.com/collie-moore/techops@sha256:1345214a77bf639584e26064ddef5992b117cbc561a1c798aafc729670444a78
-        env:
-        - name: HOST
-          valueFrom:
-            configMapKeyRef:
-              key: HOST
-              name: techops-config-ib1q
-        - name: USER
-          valueFrom:
-            configMapKeyRef:
-              key: USER
-              name: techops-config-ib1q
-        - name: PASSWORD
-          valueFrom:
-            configMapKeyRef:
-              key: PASSWORD
-              name: techops-config-ib1q
-        - name: NAME
-          valueFrom:
-            configMapKeyRef:
-              key: NAME
-              name: techops-config-ib1q
+        image: gcr.io/buupassdev/github.com/collie-moore/techops:401cf6a36615169e8220880520999022c42f52fd
+        envFrom:
+          - secretRef:
+              name: techops
         resources:
           limits:
             memory: "128Mi"
