@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:3.10-slim
+FROM python:3.10
 
 EXPOSE 8000
 
@@ -8,11 +8,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
-
-RUN apt-get update && apt-get -y install \
-    python3 python3-dev python3-dev python3-pip python3-venv python3-wheel \
-    libsqlclient-dev libssl-dev default-libmysqlclient-dev build-essential gcc \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install pip requirements
 COPY requirements.txt .
