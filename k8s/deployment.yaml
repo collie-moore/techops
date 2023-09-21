@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: techops
-        image: gcr.io/buupassdev/github.com/collie-moore/techops
+        image: gcr.io/buupassdev/github.com/collie-moore/techops:6dc842eff433ece074a4ed05d78af70805eaa1c7
         env:
         - name: HOST
           valueFrom:
