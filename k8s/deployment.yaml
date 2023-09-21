@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techops
+spec:
+  selector:
+    matchLabels:
+      app: techops
+  template:
+    metadata:
+      labels:
+        app: techops
+    spec:
+      containers:
+      - name: techops
+        image: gcr.io/buupassdev/github.com/collie-moore/techops
+        env:
+        - name: HOST
+          valueFrom:
+            configMapKeyRef:
+              key: HOST
+              name: techops-config-ib1q
+        - name: USER
+          valueFrom:
+            configMapKeyRef:
+              key: USER
+              name: techops-config-ib1q
+        - name: PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: PASSWORD
+              name: techops-config-ib1q
+        - name: NAME
+          valueFrom:
+            configMapKeyRef:
+              key: NAME
+              name: techops-config-ib1q
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
