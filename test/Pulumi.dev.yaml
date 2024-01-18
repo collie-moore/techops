@@ -1,0 +1,5 @@
+config:
+  gcp:project: novus-health-prod-319600
+  pulumi:template: gcp-python
+environment:
+  - development
